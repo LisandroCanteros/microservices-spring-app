@@ -1,0 +1,19 @@
+DB SETUP (container should be named postgres-quiz)
+create volume: docker volume create postgres-volume
+
+start up db w/ volume: docker run --name postgres-quiz --network quizapp-network -p 5432:5432 -e POSTGRES_PASSWORD=root -e POSTGRES_USER=root -d --mount source=postgres_volume,target=/var/lib/postgresql/data postgres
+
+access database container: 
+	docker exec -it postgres-quiz bash
+	su - root
+	\l           \c          \dt    
+
+
+access db container: docker exec -it postgres-quiz bash
+			psql 
+			CREATE DATABASE quizapp_question
+			
+			
+
+docker build -t quizapp .
+docker run --name quizapp --network quizapp-network -p 8080:8080 quizapp
