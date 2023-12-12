@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS question (
-    id int PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     category varchar(100) NOT NULL,
     difficulty_level varchar(20) NOT NULL,
     title varchar(100) NOT NULL,
