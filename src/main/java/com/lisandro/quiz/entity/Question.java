@@ -4,19 +4,27 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank(message = "category cannot be blank")
     private String category;
+    @NotBlank(message = "difficultyLevel cannot be blank")
     private String difficultyLevel;
+    @NotBlank(message = "title cannot be blank")
     private String title;
+    @NotBlank(message = "option1 cannot be blank")
     private String option1;
+    @NotBlank(message = "option2 cannot be blank")
     private String option2;
     private String option3;
     private String option4;
+    @NotBlank(message = "correctOption cannot be blank")
     private String correctOption;
 
     public Integer getId() {
