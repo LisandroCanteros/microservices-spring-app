@@ -1,5 +1,6 @@
 package com.lisandro.quiz.controller;
 
+import com.lisandro.quiz.dto.User;
 import com.lisandro.quiz.entity.Question;
 import com.lisandro.quiz.service.QuestionService;
 import jakarta.validation.Valid;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("question")
@@ -49,7 +49,7 @@ public class QuestionController {
         if (serviceResponse.equals("Success")) {
             return ResponseEntity.ok("User created successfully");
         }
-        
+
         return ResponseEntity.internalServerError().body("Error inserting value into database.");
     }
 
