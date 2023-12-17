@@ -11,7 +11,7 @@ public class WebClientConfig {
     @Value("${jsonplaceholder.base-url}")
     private String baseUrl;
 
-    @Bean
+    @Bean(name = "jsonplaceholderAPI")
     public WebClient.Builder webClientBuilder() {
         return WebClient.builder().baseUrl(baseUrl);
     }

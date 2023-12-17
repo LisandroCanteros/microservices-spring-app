@@ -19,17 +19,17 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping()
-    public List<Question> getQuestions() {
+    public ResponseEntity<List<Question>> getQuestions() {
         return questionService.getQuestions();
     }
 
     @GetMapping("/{id}")
-    public Optional<Question> getQuestion(@PathVariable int id){
+    public ResponseEntity<Optional<Question>> getQuestion(@PathVariable int id){
         return questionService.getQuestion(id);
     }
 
     @GetMapping("/category/{category}")
-    public List<Question> getQuestionsByCategory(@PathVariable String category) {
+    public ResponseEntity<List<Question>> getQuestionsByCategory(@PathVariable String category) {
         return questionService.getQuestionsByCategory(category);
     }
 
@@ -44,22 +44,12 @@ public class QuestionController {
             return ResponseEntity.badRequest().body("Validation failed. Errors: " + errors);
         }
 
-        String serviceResponse = questionService.addQuestion(question);
-        // check if insert was successful
-        if (serviceResponse.equals("Success")) {
-            return ResponseEntity.ok("User created successfully");
-        }
-
-        return ResponseEntity.internalServerError().body("Error inserting value into database.");
+        return questionService.addQuestion(question);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteQuestion(@PathVariable int id) {
-        String serviceResponse = questionService.deleteQuestion(id);
-        if (serviceResponse.equals("Success")) {
-            return ResponseEntity.ok("Question with id " + id + " deleted.");
-        }
-        return ResponseEntity.internalServerError().body("Error deleting the question.");
+        return questionService.deleteQuestion(id);
     }
 }
 
