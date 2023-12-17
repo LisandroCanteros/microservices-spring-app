@@ -1,6 +1,5 @@
 package com.lisandro.quiz.controller;
 
-import com.lisandro.quiz.dto.User;
 import com.lisandro.quiz.entity.Question;
 import com.lisandro.quiz.service.QuestionService;
 import jakarta.validation.Valid;
